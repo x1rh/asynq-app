@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7.0.0
+    ports:
+      - "6379:6379"
+    volume:
+      - redis_data:/data
+
+  app-main:
+    build: ..
+    environment:
+      - APP_NAME=app-main
+
+  app-replica:
+    build: ..
+    environment:
+      - APP_NAME=app-replica
+
+volumes:
+  redis_data:
+
