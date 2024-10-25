@@ -1,4 +1,4 @@
-module asynq-app
+module asynq-boilerplate
 
 go 1.22
 
@@ -8,6 +8,7 @@ require (
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/hibiken/asynq v0.24.1
 	github.com/pkg/errors v0.9.1
+	github.com/x1rh/logger v0.0.1
 )
 
 require (

@@ -1,7 +1,7 @@
 package biz1
 
 import (
-	"asynq-app/appctx"
+	"asynq-boilerplate/asynqctx"
 	"context"
 	"encoding/json"
 	"log/slog"
@@ -16,7 +16,7 @@ type Task1 struct {
 	App string `json:"app"`
 }
 
-func HandleTask1(ctx *appctx.Context) asynq.HandlerFunc {
+func HandleTask1(ctx *asynqctx.Context) asynq.HandlerFunc {
 	return func(ctx context.Context, task *asynq.Task) error {
 		if time.Now().UTC().Unix()%2 == 0 && rand.Int()%2 == 0 {
 			panic("random panic task2")

@@ -1,16 +1,17 @@
 package main
 
 import (
-	"asynq-app/appctx"
-	"asynq-app/client"
-	"asynq-app/config"
-	"asynq-app/logger"
-	"asynq-app/server"
-	"asynq-app/task"
-	"asynq-app/task/biz1"
-	"asynq-app/task/biz2"
+	"asynq-boilerplate/asynqctx"
+	"asynq-boilerplate/client"
+	"asynq-boilerplate/config"
+	"asynq-boilerplate/server"
+	"asynq-boilerplate/task"
+	"asynq-boilerplate/task/biz1"
+	"asynq-boilerplate/task/biz2"
 	"flag"
 	"fmt"
+
+	"github.com/x1rh/logger"
 
 	"log/slog"
 	"math/rand"
@@ -81,7 +82,7 @@ func main() {
 			EnableTls: false,
 		},
 	}
-	ctx := appctx.New(c)
+	ctx := asynqctx.New(c)
 	svr, err := server.New(ctx)
 	if err != nil {
 		slog.Error("fail to run server")

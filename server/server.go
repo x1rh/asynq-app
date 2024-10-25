@@ -8,10 +8,10 @@ import (
 	"log/slog"
 	"time"
 
-	"asynq-app/appctx"
-	"asynq-app/task"
-	"asynq-app/task/biz1"
-	"asynq-app/task/biz2"
+	"asynq-boilerplate/asynqctx"
+	"asynq-boilerplate/task"
+	"asynq-boilerplate/task/biz1"
+	"asynq-boilerplate/task/biz2"
 
 	"github.com/go-redis/redis"
 	"github.com/hibiken/asynq"
@@ -20,10 +20,10 @@ import (
 type Server struct {
 	server *asynq.Server
 	mux    *asynq.ServeMux
-	appctx *appctx.Context
+	appctx *asynqctx.Context
 }
 
-func New(ctx *appctx.Context) (*Server, error) {
+func New(ctx *asynqctx.Context) (*Server, error) {
 	c := ctx.Config
 	redisOpts, err := redis.ParseURL(
 		fmt.Sprintf("rediss://%s:%s@%s",

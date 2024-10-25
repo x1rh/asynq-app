@@ -1,6 +1,6 @@
-package appctx
+package asynqctx
 
-import "asynq-app/config"
+import "asynq-boilerplate/config"
 
 type Context struct {
 	Config config.Config

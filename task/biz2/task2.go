@@ -1,7 +1,7 @@
 package biz2
 
 import (
-	"asynq-app/appctx"
+	"asynq-boilerplate/asynqctx"
 	"context"
 	"encoding/json"
 	"log/slog"
@@ -16,7 +16,7 @@ type Task2 struct {
 	App string `json:"app"`
 }
 
-func HandleTask2(ctx *appctx.Context) asynq.HandlerFunc {
+func HandleTask2(ctx *asynqctx.Context) asynq.HandlerFunc {
 	return func(ctx context.Context, task *asynq.Task) error {
 		var t Task2
 
