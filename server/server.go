@@ -44,11 +44,10 @@ func New(ctx *asynqctx.Context) (*Server, error) {
 	}
 
 	server := asynq.NewServer(asynqRedisOpts, asynq.Config{
-		Concurrency: 8,
-		Queues:      nil,
-		RetryDelayFunc: func(n int, e error, t *asynq.Task) time.Duration {
-			return time.Second
-		},
+		Concurrency:    8,
+		Queues:         nil,
+		RetryDelayFunc: RetryAfterDuration(time.Second), // By default, it uses exponential backoff algorithm to calculate the delay.
+		ErrorHandler:   errorHandlerWrapper(ctx),
 	})
 
 	return &Server{
